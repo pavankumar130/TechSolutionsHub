@@ -65,7 +65,7 @@ require "./partials/_header.php";
 
 <!-- Cards-----------------------------------------    -->
 <div class="container" style="margin-bottom: 40px;">
-    <h2 class="text-center" style="margin-top: 40px; margin-bottom: 30px;">TechOverflow Categories</h2>
+    <h2 class="text-center" style="margin-top: 40px; margin-bottom: 30px;">TechSolutionsHub Categories</h2>
     <div class="row">
 
         <!-- Fetching all categories  -->
