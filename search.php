@@ -2,78 +2,66 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        #maincontainer{
-            min-height: 100vh;
-        }
-    </style>
-    <title>Welcome to iDiscuss - Coding Forums</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechSolutionsHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
 <body>
-    <?php include 'partials/_dbconnect.php';?>
-    <?php include 'partials/_header.php';?>
-    
 
-    <!-- Search Results -->
-<div class="container my-3" id="maincontainer">
-        <h1 class="py-3">Search results for <em>"<?php echo $_GET['search']?>"</em></h1>
-
-        <?php  
-        $noresults = true;
-        $query = $_GET["search"];
-        $sql = "select * from threads where match (thread_title, thread_desc) against ('$query')"; 
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-            $title = $row['thread_title'];
-            $desc = $row['thread_desc']; 
-            $thread_id= $row['thread_id'];
-            $url = "thread.php?threadid=". $thread_id;
-            $noresults = false;
-
-            // Display the search result
-            echo '<div class="result">
-                        <h3><a href="'. $url. '" class="text-dark">'. $title. '</a> </h3>
-                        <p>'. $desc .'</p>
-                </div>'; 
-            }
-        if ($noresults){
-            echo '<div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <p class="display-4">No Results Found</p>
-                        <p class="lead"> Suggestions: <ul>
-                                <li>Make sure that all words are spelled correctly.</li>
-                                <li>Try different keywords.</li>
-                                <li>Try more general keywords. </li></ul>
-                        </p>
-                    </div>
-                </div>';
-        }        
-    ?>
-
-
-
-</div>
-
-    <?php include 'partials/_footer.php';?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" cros sorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
     </script>
 </body>
 
 </html>
+
+<?php
+require "./partials/_header.php";
+?>
+
+<!-- Search results  -->
+<div class="container" style="margin-bottom: 40px;">
+    <h2 class="text-center" style="margin-top: 40px; margin-bottom: 30px;">Search Results</h2>
+    <div class="row">
+
+        <!-- Fetching all categories  -->
+        <?php
+            require "./partials/_dbconnect.php";
+
+            $category_name=$_GET['search'];
+            $sql="SELECT * FROM categories WHERE category_name LIKE '%$category_name%'";
+            $result=mysqli_query($conn,$sql);
+
+            while($row=mysqli_fetch_assoc($result))
+            {
+                $cat=$row['category_name'];
+                $cat_id=$row['category_id'];
+               echo '<div class="col-md-4  my-2">
+                    <div class="card" style="width: 25rem; height:600px">
+                        <img src="https://source.unsplash.com/500x400/?'.$cat.',code" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="threadlist.php?catid='.$cat_id.'">'.$cat.'</a></h5>
+                            <p class="card-text">'.$row['category_description'].'</p>
+                            <a href="threadlist.php?catid='.$cat_id.'" class="btn btn-primary">View threads</a>
+                        </div>
+                    </div>
+                </div>';
+            }
+        ?>
+
+    </div>
+</div>
+
+<!-- Import footer-----------------------------------------   -->
+<?php
+require "./partials/_footer.php";
+?>
