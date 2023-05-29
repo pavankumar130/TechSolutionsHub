@@ -1,15 +1,8 @@
 # TechSolutionsHub
 ### TechSolutionsHub is an interactive online forum where users can share their queries regarding the latest technologies, find solutions, and offer assistance to fellow software engineers. This platform simplifies the lives of software engineers by providing a supportive community that offers solutions to their technical challenges. Additionally, it empowers them to contribute to the open-source community by providing answers and insights to others' inquiries.
 
-### Technologies used :  
-                <ol>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Bootstrap</li>
-                    <li>PHP</li>
-                    <li>MySQL</li>
-                </ol>
-                
+### Technologies used :  HTML,CSS,Bootstrap,PHP,MySQL
+
                 
 ### Some glimpses of website :
 
