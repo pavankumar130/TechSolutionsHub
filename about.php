@@ -63,9 +63,9 @@ require "./partials/_header.php";
             <div class="accordion-body">
                 Copyright © MP 2023. All rights reserved.
 
-                The contents of this website, including but not limited to text, graphics, images, and other material, are protected by copyright law. The content may not be reproduced, modified, distributed, or republished in any form without the prior written permission of VVSDC.
+                The contents of this website, including but not limited to text, graphics, images, and other material, are protected by copyright law. The content may not be reproduced, modified, distributed, or republished in any form without the prior written permission of MP Kumar.
 
-                You may not reproduce, modify, distribute, or republish any materials found on this website without obtaining explicit written permission from VVSDC. Unauthorized use or reproduction of any content on this website may violate copyright laws and result in legal action.
+                You may not reproduce, modify, distribute, or republish any materials found on this website without obtaining explicit written permission from MP Kumar. Unauthorized use or reproduction of any content on this website may violate copyright laws and result in legal action.
 
                 For inquiries regarding the use or licensing of copyrighted materials from this website, please contact  Meravath Pavan Kumar at <a href="mailto:20bcs130@iiitdmj.ac.in">Send email</a>
 
