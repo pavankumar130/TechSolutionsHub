@@ -60,7 +60,7 @@ echo ' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         if(isset($_SESSION['loggedin']) and $_SESSION['loggedin']=true)
         {
             echo '
-            <button class="btn btn-danger ml-2">'.$_SESSION['user_email'].'</button>
+            <a href="/forum/user.php" role="button" class="btn btn-danger ml-2">'.$_SESSION['user_email'].'</button>
             <a href="/forum/partials/_logout.php" role="button" class="btn btn-outline-success mx-2">Logout</a>';
         }
         else
